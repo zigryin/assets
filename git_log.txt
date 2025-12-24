@@ -1,2 +1,2 @@
 To https://github.com/zigryin/assets.git
-   3a0c877..99f252c  main -> main
+   536b05b..d85b8db  main -> main
