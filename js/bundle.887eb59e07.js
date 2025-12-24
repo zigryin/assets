@@ -132,8 +132,8 @@ div.innerHTML=`
                   post.username
                 }" class="text-reset text-decoration-none zigry-link">
                   <img onerror="this.src='/assets/images/default/${
-                    post.gender?.toLowerCase() || "unknown"
-                  }.png'"
+                    post.gender?.toLowerCase() || "756e6b6e6f776e"
+                  }.png';this.error=null;"
                        class="rounded-circle border border-2 object-fit-cover lock dp${
                          post.ref_id
                        }"
@@ -182,8 +182,8 @@ div.innerHTML=`
               ? `<div class="p-1 py-0 mx-3 mt-1 text-muted d-flex justify-content-between align-items-center"><div class="d-flex gap-2 align-items-center">↪<b class="small d-none">${translations.Sharefrom||"Shared from"}</b><a href="/${
                         post.shared_from_uname
                       }" class="link gap-2 align-items-center d-flex zigry-link"><img onerror="this.src='/assets/images/default/${
-                            post.shared_from_gender?.toLowerCase() || "unknown"
-                          }.png'"
+                            post.shared_from_gender?.toLowerCase() || "756e6b6e6f776e"
+                          }.png';this.error=null;"
 class="rounded-circle border border-2 object-fit-cover lock"
 alt="Profile" height="32px" src="${
                                 post.from_avatar
