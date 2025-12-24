@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100" height="100" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="200" height="200" style="margine:auto;shape-rendering: auto; display: block; background: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g transform="rotate(0 50 50)">
+  <rect fill="#fe718d" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="-0.48309178743961345s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g transform="rotate(40 50 50)">
+  <rect fill="#f47e60" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="-0.42270531400966177s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g transform="rotate(80 50 50)">
+  <rect fill="#f8b26a" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="-0.3623188405797101s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g transform="rotate(120 50 50)">
+  <rect fill="#abbd81" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="-0.3019323671497584s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g transform="rotate(160 50 50)">
+  <rect fill="#849b87" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="-0.24154589371980673s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g transform="rotate(200 50 50)">
+  <rect fill="#6492ac" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="-0.18115942028985504s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g transform="rotate(240 50 50)">
+  <rect fill="#637cb5" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="-0.12077294685990336s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g transform="rotate(280 50 50)">
+  <rect fill="#9528ff" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="-0.06038647342995168s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g transform="rotate(320 50 50)">
+  <rect fill="#fe718d" height="45" width="12" ry="22.5" rx="6" y="3.5" x="44">
+    <animate repeatCount="indefinite" begin="0s" dur="0.5434782608695652s" keyTimes="0;1" values="1;0" attributeName="opacity"></animate>
+  </rect>
+</g><g></g></g></svg>
+<g id="#9966ffff">
+<path fill="#9966ff" opacity="1.00" d=" M 113.48 2.20 C 140.63 -4.02 165.49 26.00 155.29 51.30 C 140.90 81.99 124.09 111.52 108.85 141.81 C 120.17 137.42 133.22 136.29 143.30 129.31 C 150.20 119.49 149.39 104.65 155.11 95.11 C 170.51 100.89 186.81 112.32 188.91 130.10 C 193.86 150.67 177.44 174.36 155.86 175.00 C 142.67 176.72 131.34 168.70 120.15 163.16 C 116.96 170.11 113.81 177.12 109.44 183.42 C 98.73 198.06 76.54 202.80 61.02 192.97 C 45.79 184.43 39.44 164.15 46.27 148.24 C 61.39 118.44 78.00 89.32 91.96 58.96 C 81.21 63.10 69.43 64.62 59.31 70.30 C 52.98 80.33 51.72 92.53 48.76 103.83 C 31.03 97.38 9.71 84.81 10.92 63.00 C 8.81 43.08 27.14 24.07 47.00 24.93 C 59.33 24.28 69.39 31.97 79.95 36.91 C 86.35 21.80 95.61 5.23 113.48 2.20 Z" class="zigry" />
+</g>
+<style>
+.zigry{
+animation: zigry 1s cubic-bezier(0.11, 0, 0.5, 0) 800ms infinite alternate-reverse both;
+}
+@keyframes zigry {
+	0% {
+		transform: scaleX(0);
+		transform-origin: center center;
+	}
+
+	100% {
+		transform: scaleX(1);
+		transform-origin: center center;
+	}
+}
+</style>
+</svg>

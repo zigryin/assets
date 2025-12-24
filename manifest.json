@@ -1,0 +1,48 @@
+{
+    "name": "Zigry Network",
+    "short_name": "Zigry",
+	"description": "Zigry is your space to connect with people, share moments, discover content, and build real communities. Join the next-gen social network made for creators and everyday users.",
+    "id": "app.zigry.in",
+	"start_url": "/",
+	"scope": "/",
+    "display": "standalone",
+    "background_color": "#ffffff00",
+    "theme_color": "#7f22f1",
+    "icons": [
+      {
+        "src": "/assets/images/logo.svg",
+        "sizes": "any",
+        "type": "image/svg+xml",
+        "purpose": "any"
+      },
+		{
+		"src": "/assets/images/180x180.png",
+		"sizes": "180x180",
+		"type": "image/png"
+	  },		{
+		"src": "/assets/images/192x192.png",
+		"sizes": "192x192",
+		"type": "image/png"
+	  },		
+	  {
+		"src": "/assets/images/512x512.png",
+		"sizes": "512x512",
+		"type": "image/png"
+	  }
+    ],
+	  "screenshots": [
+    {
+      "src": "/assets/images/Screenshot-desktop.png",
+      "sizes": "1000x474",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/assets/images/Screenshot-mobile.png",
+      "sizes": "411x827",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+  }
+  

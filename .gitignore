@@ -1,0 +1,11 @@
+uploads
+assets/fonts
+*.php
+*.log
+sitemap.*
+sw.js
+auth*
+robots.txt
+.htaccess
+web.config
+*robots*
