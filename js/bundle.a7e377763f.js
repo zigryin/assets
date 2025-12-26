@@ -154,7 +154,7 @@ div.innerHTML=`
                     }</a>
                     <a href="/post/${
                       post.post_id
-                    }/posts" class="text-reset text-decoration-none zigry-link">
+                    }" class="text-reset text-decoration-none zigry-link">
                     View
                     </a>
                     <div>
