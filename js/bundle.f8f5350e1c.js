@@ -154,13 +154,9 @@ div.innerHTML=`
                     }</a>
   
                     <div>
-                                      <a href="/post/${
-                      post.post_id
-                    }" class="text-reset text-decoration-none zigry-link">
-                                        <span class="opacity-75 smaller">${
-                      post.created_at || ""
-                    }</span>
-                    <span class="text-primary smaller">${privacyLabel}</span> View Post
+                    <a href="/post/${post.post_id}" class="text-reset text-decoration-none zigry-link smaller">
+                      <span class="opacity-75">${post.created_at || ""}</span>
+                      <span class="text-primary">${privacyLabel}</span> View Post
                     </a>
 
                     </div>
