@@ -152,6 +152,11 @@ div.innerHTML=`
                         ? '<span class="glow lock zigry-fill zigry-stroke mb-1 zigry z-verified zigry-xs"></span>'
                         : ""
                     }</a>
+                    <a href="/post/${
+                      post.post_id
+                    }/posts" class="text-reset text-decoration-none zigry-link">
+                    View
+                    </a>
                     <div>
                     <span class="opacity-75 smaller">${
                       post.created_at || ""
