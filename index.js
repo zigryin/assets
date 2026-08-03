@@ -8,8 +8,7 @@ export default {
     url.hostname = origin.hostname;
     url.protocol = origin.protocol;
 
-        if (
-      url.pathname.startsWith("/assets/")) {
+    if (url.pathname.startsWith("/assets/")) {
       return env.ASSETS.fetch(request);
     }
 
