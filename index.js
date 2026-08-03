@@ -1,27 +1,28 @@
-const ORIGIN = "https://www.zigry.in";
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 
-export default {
+// index.js
+var ORIGIN = "https://www.zigry.in";
+var index_default = {
   async fetch(request) {
+   
     const url = new URL(request.url);
-
-    // Forward request to origin
-    url.hostname = new URL(ORIGIN).hostname;
-    url.protocol = new URL(ORIGIN).protocol;
-
+    const ourl = new URL(ORIGIN);
+    if(url.hostname !== ourl.hostname){
+      throw new Error("Origin unavailable");
+    }
+    /* url.hostname = new URL(ORIGIN).hostname;
+    url.protocol = new URL(ORIGIN).protocol; */
     try {
       const response = await fetch(new Request(url, request), {
         cf: {
           cacheEverything: false
         }
       });
-
-      // If origin returned 5xx, show maintenance page
       if (response.status >= 500) {
         throw new Error("Origin unavailable");
       }
-
       return response;
-
     } catch (err) {
       return new Response(maintenancePage(), {
         status: 200,
@@ -32,16 +33,15 @@ export default {
       });
     }
   }
-}
-
+};
 function maintenancePage() {
-return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zigry • We'll Be Back Soon</title>
+<title>Zigry \u2022 We'll Be Back Soon</title>
 
 <link rel="icon" href="favicon.ico">
 
@@ -343,7 +343,7 @@ font-size:16px;
 <div class="card">
 
 <div class="badge">
-● Scheduled Maintenance
+\u25CF Scheduled Maintenance
 </div>
 
 <h1>
@@ -391,8 +391,13 @@ document.querySelector('.bg').appendChild(s);
 
 }
 
-</script>
+<\/script>
 
 </body>
 </html>`;
 }
+__name(maintenancePage, "maintenancePage");
+export {
+  index_default as default
+};
+//# sourceMappingURL=index.js.map
