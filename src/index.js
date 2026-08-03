@@ -35,7 +35,7 @@ var index_default = {
 
     try {
       // 2. Pass the incoming request directly to the origin
-      const response = await fetch(request, {
+      const response = await fetch(new Request(url, request), {
         cf: {
           cacheEverything: false
         }
