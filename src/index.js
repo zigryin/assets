@@ -26,25 +26,29 @@ var index_default = {
   async fetch(request) {
     const url = new URL(request.url);
 
-    // 1. Strict Hostname Check: Allow ONLY 'www.zigry.in' and 'zigry.in'
-	const isZigryDomain = url.hostname === DOMAIN || url.hostname.endsWith("."+DOMAIN);
+    // 1. Strict Hostname Check: Allow 'zigry.in' and ANY subdomain (*.zigry.in)
+    const isZigryDomain = url.hostname === DOMAIN || url.hostname.endsWith("." + DOMAIN);
 
-	if (!isZigryDomain) {
-	  throw new Error("Origin unavailable");
-	}
+    if (!isZigryDomain) {
+      throw new Error("Origin unavailable");
+    }
 
     try {
-      const response = await fetch(new Request(url, request), {
+      // 2. Pass the incoming request directly to the origin
+      const response = await fetch(request, {
         cf: {
           cacheEverything: false
         }
       });
 
+      // 3. Catch server/origin errors (500, 502, 503, 521, etc.)
       if (response.status >= 500) {
         throw new Error(`Server returned status ${response.status}`);
       }
 
+      // Live site returns normally
       return response;
+
     } catch (err) {
       const isOriginError = err.message.includes("Origin unavailable");
 
@@ -53,10 +57,10 @@ var index_default = {
         BADGE_TEXT: isOriginError ? "Host Not Allowed" : "Scheduled Maintenance",
         HEADING: isOriginError ? "unauthorized origin" : "will be back soon",
         SUBTITLE: isOriginError 
-          ? "This domain or subdomain is not allowed to access this resource."
+          ? "This domain or subdomain is not permitted."
           : "We're making Zigry even better for you.",
         MESSAGE: isOriginError
-          ? "Please check that you are accessing the main site directly at <strong>zigry.in</strong> or <strong>www.zigry.in</strong>."
+          ? "Please check that you are accessing official <strong>zigry.in</strong> domains."
           : "Our engineers are upgrading the platform with new features and security enhancements.<br><br>Thank you for your patience.",
         STATUS_TEXT: isOriginError ? "Access Denied" : "Maintenance in progress..."
       });
