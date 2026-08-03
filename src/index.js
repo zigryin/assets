@@ -1,6 +1,6 @@
 import htmlTemplate from './template.html';
 
-const ALLOWED_HOSTNAMES = ["www.zigry.in", "zigry.in"];
+const DOMAIN = "zigry.in";
 
 function renderMaintenancePage(params = {}) {
   const defaults = {
@@ -27,9 +27,11 @@ var index_default = {
     const url = new URL(request.url);
 
     // 1. Strict Hostname Check: Allow ONLY 'www.zigry.in' and 'zigry.in'
-    if (!ALLOWED_HOSTNAMES.includes(url.hostname)) {
-      throw new Error("Origin unavailable");
-    }
+	const isZigryDomain = url.hostname === DOMAIN || url.hostname.endsWith("."+DOMAIN);
+
+	if (!isZigryDomain) {
+	  throw new Error("Origin unavailable");
+	}
 
     try {
       const response = await fetch(new Request(url, request), {
