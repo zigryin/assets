@@ -2,6 +2,18 @@ const ORIGIN = "https://www.zigry.in";
 
 export default {
   async fetch(request, env) {
+    console.log("ENV TYPE:", typeof env);
+    if (url.pathname.startsWith("/assets/")) {
+  return new Response(JSON.stringify({
+    envType: typeof env,
+    hasAssets: !!env?.ASSETS,
+    keys: env ? Object.keys(env) : []
+  }), {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+}
     const url = new URL(request.url);
 
     const origin = new URL(ORIGIN);
