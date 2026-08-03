@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zigry • We'll Be Back Soon</title>
+
+<link rel="icon" href="favicon.ico">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+height:100%;
+overflow:hidden;
+font-family:Poppins,sans-serif;
+background:#09090f;
+color:#fff;
+}
+
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+/* Background */
+
+.bg{
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 50% 40%,rgba(126,34,206,.22),transparent 35%),
+radial-gradient(circle at 20% 80%,rgba(124,58,237,.08),transparent 25%),
+radial-gradient(circle at 80% 10%,rgba(168,85,247,.08),transparent 20%),
+#09090f;
+overflow:hidden;
+}
+
+/* Stars */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:#fff;
+border-radius:50%;
+opacity:.7;
+animation:blink 4s infinite;
+}
+
+@keyframes blink{
+0%,100%{opacity:.15;}
+50%{opacity:1;}
+}
+
+/* Glow */
+
+.glow{
+position:absolute;
+width:700px;
+height:700px;
+background:#7c3aed;
+filter:blur(170px);
+opacity:.18;
+border-radius:50%;
+}
+
+/* Card */
+
+.card{
+
+position:relative;
+z-index:10;
+
+width:min(850px,92vw);
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(25px);
+
+border-radius:30px;
+
+padding:70px 60px;
+
+text-align:center;
+
+box-shadow:
+0 0 40px rgba(124,58,237,.18),
+0 30px 80px rgba(0,0,0,.45);
+
+}
+
+.logo{
+
+width:120px;
+
+height:120px;
+
+margin:auto;
+
+margin-bottom:35px;
+
+filter:drop-shadow(0 0 25px rgba(124,58,237,.55));
+
+}
+
+.logo img{
+
+width:100%;
+
+}
+
+.badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:50px;
+
+background:rgba(124,58,237,.18);
+
+color:#b892ff;
+
+font-weight:600;
+
+font-size:14px;
+
+letter-spacing:1px;
+
+margin-bottom:20px;
+
+}
+
+h1{
+
+font-size:68px;
+
+font-weight:800;
+
+line-height:1.05;
+
+}
+
+.gradient{
+
+background:linear-gradient(90deg,#ffffff,#a855f7);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.subtitle{
+
+margin-top:18px;
+
+font-size:22px;
+
+color:#d6d6d6;
+
+font-weight:300;
+
+line-height:1.8;
+
+}
+
+.line{
+
+width:140px;
+
+height:4px;
+
+border-radius:20px;
+
+margin:45px auto;
+
+background:linear-gradient(90deg,#7c3aed,#a855f7);
+
+}
+
+.info{
+
+max-width:620px;
+
+margin:auto;
+
+font-size:18px;
+
+color:#bbbbbb;
+
+line-height:1.9;
+
+}
+
+.status{
+
+margin-top:45px;
+
+display:inline-flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:14px 26px;
+
+border-radius:50px;
+
+background:#111117;
+
+border:1px solid rgba(124,58,237,.25);
+
+}
+
+.dot{
+
+width:10px;
+
+height:10px;
+
+border-radius:50%;
+
+background:#8b5cf6;
+
+animation:pulse 1.4s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{transform:scale(.8);opacity:.5;}
+
+50%{transform:scale(1.5);opacity:1;}
+
+100%{transform:scale(.8);opacity:.5;}
+
+}
+
+.status span{
+
+color:#ddd;
+
+font-weight:500;
+
+}
+
+@media(max-width:700px){
+
+.card{
+
+padding:50px 25px;
+
+}
+
+.logo{
+
+width:90px;
+
+height:90px;
+
+}
+
+h1{
+
+font-size:42px;
+
+}
+
+.subtitle{
+
+font-size:18px;
+
+}
+
+.info{
+
+font-size:16px;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+
+<div class="glow"></div>
+
+</div>
+
+<div class="card">
+
+<div class="badge">
+● Scheduled Maintenance
+</div>
+
+<h1>
+<img src="zigry.svg" style="height:100px;" alt="Zigry"><br>
+will be back soon
+</h1>
+
+<div class="subtitle">
+We're making Zigry even better for you.
+</div>
+
+<div class="line"></div>
+
+<div class="info">
+Our engineers are currently upgrading the platform with new features,
+performance improvements and security enhancements.
+<br><br>
+Thank you for your patience. We'll be back online shortly.
+</div>
+
+<div class="status">
+
+<div class="dot"></div>
+
+<span>Maintenance in progress...</span>
+
+</div>
+
+</div>
+
+<script>
+
+for(let i=0;i<140;i++){
+
+const s=document.createElement('div');
+
+s.className='star';
+
+s.style.left=Math.random()*100+'%';
+s.style.top=Math.random()*100+'%';
+
+s.style.animationDelay=(Math.random()*4)+'s';
+
+document.querySelector('.bg').appendChild(s);
+
+}
+
+</script>
+
+</body>
+</html>
