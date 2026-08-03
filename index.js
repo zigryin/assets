@@ -1,50 +1,30 @@
-const ORIGIN = "https://www.zigry.in";
+var __defProp = Object.defineProperty;
+var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 
-export default {
+// index.js
+var ORIGIN = "https://www.zigry.in";
+var index_default = {
   async fetch(request, env) {
-    console.log("ENV TYPE:", typeof env);
-    if (url.pathname.startsWith("/assets/")) {
-  return new Response(JSON.stringify({
-    envType: typeof env,
-    hasAssets: !!env?.ASSETS,
-    keys: env ? Object.keys(env) : []
-  }), {
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
-}
-    const url = new URL(request.url);
+        const url = new URL(request.url);
 
     const origin = new URL(ORIGIN);
     url.hostname = origin.hostname;
     url.protocol = origin.protocol;
-
     if (url.pathname.startsWith("/assets/")) {
       return env.ASSETS.fetch(request);
     }
-
-    
-    // Detect asset requests
-    const isAsset =
-      /\.(?:css|js|mjs|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|eot|otf|mp4|webm|mp3|wav|json|xml|txt|pdf|zip)$/i.test(url.pathname);
-
+    const isAsset = /\.(?:css|js|mjs|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|eot|otf|mp4|webm|mp3|wav|json|xml|txt|pdf|zip)$/i.test(url.pathname);
     try {
       const response = await fetch(new Request(url, request), {
         cf: {
           cacheEverything: false
         }
       });
-
       if (response.status >= 500) {
         throw new Error("Origin unavailable");
       }
-
       return response;
-
     } catch (err) {
-
-      // Don't serve maintenance HTML for assets
       if (isAsset) {
         return new Response(null, {
           status: 503,
@@ -53,7 +33,6 @@ export default {
           }
         });
       }
-
       return new Response(maintenancePage(), {
         headers: {
           "Content-Type": "text/html; charset=UTF-8",
@@ -62,16 +41,15 @@ export default {
       });
     }
   }
-}
-
+};
 function maintenancePage() {
-return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zigry • We'll Be Back Soon</title>
+<title>Zigry \u2022 We'll Be Back Soon</title>
 
 <link rel="icon" href="favicon.ico">
 
@@ -373,7 +351,7 @@ font-size:16px;
 <div class="card">
 
 <div class="badge">
-● Scheduled Maintenance
+\u25CF Scheduled Maintenance
 </div>
 
 <h1>
@@ -421,8 +399,13 @@ document.querySelector('.bg').appendChild(s);
 
 }
 
-</script>
+<\/script>
 
 </body>
 </html>`;
 }
+__name(maintenancePage, "maintenancePage");
+export {
+  index_default as default
+};
+//# sourceMappingURL=index.js.map
