@@ -1,39 +1,30 @@
-var __defProp = Object.defineProperty;
-var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+const ORIGIN = "https://www.zigry.in";
 
-// index.js
-var ORIGIN = "https://www.zigry.in";
-var index_default = {
-  async fetch(request, env) {
-        const url = new URL(request.url);
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
 
-    const origin = new URL(ORIGIN);
-    url.hostname = origin.hostname;
-    url.protocol = origin.protocol;
-    if (url.pathname.startsWith("/assets/")) {
-      return env.ASSETS.fetch(request);
-    }
-    const isAsset = /\.(?:css|js|mjs|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|eot|otf|mp4|webm|mp3|wav|json|xml|txt|pdf|zip)$/i.test(url.pathname);
+    // Forward request to origin
+    url.hostname = new URL(ORIGIN).hostname;
+    url.protocol = new URL(ORIGIN).protocol;
+
     try {
       const response = await fetch(new Request(url, request), {
         cf: {
           cacheEverything: false
         }
       });
+
+      // If origin returned 5xx, show maintenance page
       if (response.status >= 500) {
         throw new Error("Origin unavailable");
       }
+
       return response;
+
     } catch (err) {
-      if (isAsset) {
-        return new Response(null, {
-          status: 503,
-          headers: {
-            "Cache-Control": "no-store"
-          }
-        });
-      }
       return new Response(maintenancePage(), {
+        status: 200,
         headers: {
           "Content-Type": "text/html; charset=UTF-8",
           "Cache-Control": "no-store"
@@ -41,15 +32,16 @@ var index_default = {
       });
     }
   }
-};
+}
+
 function maintenancePage() {
-  return `<!DOCTYPE html>
+return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zigry \u2022 We'll Be Back Soon</title>
+<title>Zigry • We'll Be Back Soon</title>
 
 <link rel="icon" href="favicon.ico">
 
@@ -351,7 +343,7 @@ font-size:16px;
 <div class="card">
 
 <div class="badge">
-\u25CF Scheduled Maintenance
+● Scheduled Maintenance
 </div>
 
 <h1>
@@ -399,13 +391,8 @@ document.querySelector('.bg').appendChild(s);
 
 }
 
-<\/script>
+</script>
 
 </body>
 </html>`;
 }
-__name(maintenancePage, "maintenancePage");
-export {
-  index_default as default
-};
-//# sourceMappingURL=index.js.map
