@@ -8,6 +8,12 @@ export default {
     url.hostname = origin.hostname;
     url.protocol = origin.protocol;
 
+        if (
+      url.pathname.startsWith("/assets/")) {
+      return env.ASSETS.fetch(request);
+    }
+
+    
     // Detect asset requests
     const isAsset =
       /\.(?:css|js|mjs|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|eot|otf|mp4|webm|mp3|wav|json|xml|txt|pdf|zip)$/i.test(url.pathname);
