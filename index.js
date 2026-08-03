@@ -4,9 +4,13 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
-    // Forward request to origin
-    url.hostname = new URL(ORIGIN).hostname;
-    url.protocol = new URL(ORIGIN).protocol;
+    const origin = new URL(ORIGIN);
+    url.hostname = origin.hostname;
+    url.protocol = origin.protocol;
+
+    // Detect asset requests
+    const isAsset =
+      /\.(?:css|js|mjs|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|eot|otf|mp4|webm|mp3|wav|json|xml|txt|pdf|zip)$/i.test(url.pathname);
 
     try {
       const response = await fetch(new Request(url, request), {
@@ -15,7 +19,6 @@ export default {
         }
       });
 
-      // If origin returned 5xx, show maintenance page
       if (response.status >= 500) {
         throw new Error("Origin unavailable");
       }
@@ -23,8 +26,18 @@ export default {
       return response;
 
     } catch (err) {
+
+      // Don't serve maintenance HTML for assets
+      if (isAsset) {
+        return new Response(null, {
+          status: 503,
+          headers: {
+            "Cache-Control": "no-store"
+          }
+        });
+      }
+
       return new Response(maintenancePage(), {
-        status: 200,
         headers: {
           "Content-Type": "text/html; charset=UTF-8",
           "Cache-Control": "no-store"
