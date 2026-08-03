@@ -1,7 +1,7 @@
 const ORIGIN = "https://www.zigry.in";
 
 export default {
-  async fetch(request) {
+  async fetch(request, env)) {
     const url = new URL(request.url);
 
     const origin = new URL(ORIGIN);
