@@ -1,6 +1,6 @@
 {
   "name": "zigry-fallback",
-  "main": "src/index.js",
+  "main": "index.js",
   "compatibility_date": "2026-08-01"
   "assets": {
     "directory": "./assets"
