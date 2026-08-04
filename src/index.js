@@ -76,8 +76,13 @@ var index_default = {
 
     } catch (err) {
       const isOriginError = err.message.includes("Origin unavailable");
-		showError(isOriginError);
-		exit;
+		return new Response(showError(isOriginError), {
+        status: 200,
+        headers: {
+          "Content-Type": "text/html; charset=UTF-8",
+          "Cache-Control": "no-store"
+        }
+      });
 
     }
   }
