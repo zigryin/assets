@@ -23,7 +23,7 @@ function renderMaintenancePage(params = {}) {
 }
 
 function showError(isOriginError){
-	      const pageHtml = renderMaintenancePage({
+	      return renderMaintenancePage({
         PAGE_TITLE: isOriginError ? "Zigry • Access Restricted" : "Zigry • Maintenance",
         BADGE_TEXT: isOriginError ? "Host Not Allowed" : "Scheduled Maintenance",
         HEADING: isOriginError ? "unauthorized origin" : "will be back soon",
@@ -36,13 +36,6 @@ function showError(isOriginError){
         STATUS_TEXT: isOriginError ? "Access Denied" : "Maintenance in progress..."
       });
 
-      return new Response(pageHtml, {
-        status: isOriginError ? 403 : 503,
-        headers: {
-          "Content-Type": "text/html; charset=UTF-8",
-          "Cache-Control": "no-store"
-        }
-      });
 }
 
 var index_default = {
@@ -53,8 +46,7 @@ var index_default = {
     const isZigryDomain = url.hostname === DOMAIN || url.hostname.endsWith("." + DOMAIN);
 
     if (!isZigryDomain) {
-      showError(!isZigryDomain);
-	  exit;
+		throw new Error("Origin unavailable");
     }
 
     try {
@@ -67,8 +59,7 @@ var index_default = {
 
       // 3. Catch server/origin errors (500, 502, 503, 521, etc.)
       if (response.status >= 500) {
-        showError(false);
-		exit;
+			throw new Error("Server Error");
       }
 
       // Live site returns normally
@@ -76,8 +67,8 @@ var index_default = {
 
     } catch (err) {
       const isOriginError = err.message.includes("Origin unavailable");
-		return new Response(showError(isOriginError), {
-        status: 200,
+	  return new Response(showError(isOriginError), {
+        status: isOriginError ? 403 : 503,
         headers: {
           "Content-Type": "text/html; charset=UTF-8",
           "Cache-Control": "no-store"
