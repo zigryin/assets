@@ -54,6 +54,7 @@ var index_default = {
 
     if (!isZigryDomain) {
       showError(!isZigryDomain);
+	  exit;
     }
 
     try {
@@ -67,6 +68,7 @@ var index_default = {
       // 3. Catch server/origin errors (500, 502, 503, 521, etc.)
       if (response.status >= 500) {
         showError(false);
+		exit;
       }
 
       // Live site returns normally
@@ -75,6 +77,7 @@ var index_default = {
     } catch (err) {
       const isOriginError = err.message.includes("Origin unavailable");
 		showError(isOriginError);
+		exit;
 
     }
   }
